@@ -1,7 +1,7 @@
 import "./assets/styles/App.css";
 import React from "react";
-import Header from "./components/header/Header";
 
+import {Header} from "./components/route"
 import {Footer} from "./components/route"
 import {SelectGame} from "./components/route"
 
