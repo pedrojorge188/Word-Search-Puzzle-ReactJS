@@ -1,16 +1,14 @@
 import React from "react";
-import "./control-panel.css"
+import "./footer.css"
 
 function Footer(){
     return(   
         <div className="card">
-        <div className="card-header">
-            Quote
-        </div>
-        <div className="card-body">
-            <blockquote className="blockquote mb-0">
-            <p>A well-known quote, contained in a blockquote element.</p>
-            <footer className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        <div className="card-body text-center shadow p-3 mb-5 bg-body rounded main">
+            <blockquote className="blockquote mb-0"> 
+            <p><b>Trabalho realizador por</b></p>
+            <footer className="blockquote-footer name-footer">Pedro Jorge a2021142041 </footer>
+            <footer className="blockquote-footer name-footer">Luiz Travassos a2021136600 </footer>
             </blockquote>
         </div>
         </div>
