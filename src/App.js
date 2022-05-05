@@ -1,12 +1,12 @@
 import "./assets/styles/App.css";
 import React from "react";
-
+import {Footer} from "./components/route"
 
 function App() {
   return (
     <div id="container">
       <React.StrictMode>
-      
+        <Footer />
       </React.StrictMode>
     </div>
 
