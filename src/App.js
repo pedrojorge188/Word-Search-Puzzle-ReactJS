@@ -1,14 +1,14 @@
 import "./assets/styles/App.css";
 import React from "react";
-import Header from "./components/header/Header";
 
+import {Header} from "./components/route"
 import {Footer} from "./components/route"
 
 function App() {
   return (
     <div id="container">
       <React.StrictMode>
-        <Header/>
+        <Header />
         <Footer />
       </React.StrictMode>
     </div>
