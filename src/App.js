@@ -9,9 +9,11 @@ function App() {
   return (
     <div id="container">
       <React.StrictMode>
-        <Header/>
-        <SelectGame/>
-        <Footer />
+        <div className="Container">
+          <Header/>
+          <SelectGame/>
+          <Footer />
+        </div>
       </React.StrictMode>
     </div>
 
