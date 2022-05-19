@@ -1,0 +1,9 @@
+.buttonBoard{
+    border: none;
+    box-shadow: gray 2px;
+    margin: 1px;
+}
+.buttonBoard:hover{
+    background-color: green;
+    color: white;
+}
