@@ -1,0 +1,10 @@
+.boardContent{
+    display: grid;
+    grid-template-columns: repeat(10,20px) ;
+}
+.boardButton{
+    border: none;
+    margin: 1px;
+    margin-top: 5px;
+    text-align: center;
+}

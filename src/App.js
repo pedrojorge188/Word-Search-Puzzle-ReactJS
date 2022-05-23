@@ -16,6 +16,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
   const handleGameStart = () => {
+    
     if(gameStarted){
       setGameStarted(false);
     }else{
@@ -51,4 +52,3 @@ function App() {
 }
 
 export default App;
-
