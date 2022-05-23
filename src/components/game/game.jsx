@@ -1,50 +1,69 @@
 import "./game.css";
 import React from "react";
+import Timer from "./timer"
 
-let hideBoard;
 
 function verifyBoardSize(selectedLevel){ 
-    /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
-    let tam = 0;
-    if(selectedLevel === "1"){
-      tam = 60;
-    }else if(selectedLevel === "2"){
-      tam = 80;
-    }else if(selectedLevel === "3"){
-      tam = 100;
-    }else{
-     hideBoard = true;
-    }
-     hideBoard = true;
-    return tam;
+  /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
+  let tam = 0;
+  if(selectedLevel === "1"){
+    tam = 60;
+  }else if(selectedLevel === "2"){
+    tam = 80;
+  }else if(selectedLevel === "3"){
+    tam = 100;
+  }
+  return tam;
 }
 
 function StartBoard(tam){
-    let board = []
-    let letter = "a"
-    for(let i = 0;i<tam;i++){
-      board.push(<button className="boardButton" id={i}>{letter}</button>)
-    }
-  
-    return board;
+  let board = []
+  let letter = "a"
+  for(let i = 0;i<tam;i++){
+    board.push(<button className="boardButton" id={i}>{letter}</button>)
+  }
+
+  return board;
 }
 
-function MainBoard(props){
-    const {selectedLevel} = props
+function GameComponents(props){
+
+    const {selectedLevel,gameStarted} = props
+
+    let className = "MainContent-inactive"
     let tam;
     let board = []
+    let valid;
+
     tam = verifyBoardSize(selectedLevel);
 
     board = StartBoard(tam)
-    
 
-    //Debug default 
-    console.log(board);
+    if(gameStarted === true){
+      className = "MainContent-active"
+
+    }
+
+    if(gameStarted === true){
+      valid = <Timer />
+    }else{
+      valid = "Ocorreu um erro com o relogio!"
+    }
+    
     return(
         
-       <div className="boardContent">{board}</div>
+    <div className={className}>
+        <div className="boardContent">
+           {board}
+        </div>
+        <div className="timerDiv">
+          {valid}
+        </div>
+    </div>
+    
     )
 
 }
 
-export default MainBoard;
+export default GameComponents;
+
