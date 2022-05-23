@@ -1,5 +1,6 @@
 .select-menu{
     border: none;
     display: flex;
+    height: 40px;
     gap: 5px;
 }

@@ -4,7 +4,7 @@ import "./select-game.css"
 
 function SelectGame(props){
     const { gameStarted, selectedLevel, 
-          onGameStart, onLevelChange} = props;
+          onGameStart, onLevelChange } = props;
     const gameStartedClass = gameStarted ? "gameStarted" : "" ;
 
     return(   
@@ -21,7 +21,7 @@ function SelectGame(props){
       </select>
       <button type="button" class="btn btn-outline-success play-button" id="play-button"
       disabled={selectedLevel==="0"}
-      onClick={onGameStart}>{gameStarted ? "Parar Jogo" : "Iniciar Jogo"}</button>
+      onClick={onGameStart}>{gameStarted ? "Parar" : "Iniciar"}</button>
     </div>
 
     )

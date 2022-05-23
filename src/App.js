@@ -2,18 +2,19 @@ import "./assets/styles/App.css";
 import React from "react";
 import {useState} from "react";
 
-import {Header,
+import {
+        Header,
         Footer,
         SelectGame,
-        Board
+        MainBoard
 } from "./components/route"
 
 
-
 function App() {
+
+  /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
-
   const handleGameStart = () => {
     if(gameStarted){
       setGameStarted(false);
@@ -38,9 +39,10 @@ function App() {
                 onLevelChange={handleLevelChange}
                 selectedLevel={selectedLevel}
               />
-            <Board/>
           </div>
-          
+          <MainBoard 
+            selectedLevel = {selectedLevel}
+          />
           <Footer />
       </React.StrictMode>
     </div>
