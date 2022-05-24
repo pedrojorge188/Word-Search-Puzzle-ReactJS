@@ -1,6 +1,6 @@
 import "./game.css";
 import React from "react";
-import Timer from "./timer"
+import Timer from "./clock/timer"
 
 
 function verifyBoardSize(selectedLevel){ 
@@ -18,12 +18,12 @@ function verifyBoardSize(selectedLevel){
 
 function StartBoard(tam){
   let board = []
-  let letter = "a"
   for(let i = 0;i<tam;i++){
+    let letter = "a"
     board.push(<button className="boardButton" id={i}>{letter}</button>)
   }
-
   return board;
+  
 }
 
 function GameComponents(props){
@@ -45,7 +45,7 @@ function GameComponents(props){
     }
 
     if(gameStarted === true){
-      valid = <Timer />
+      valid = <Timer/>
     }else{
       valid = "Ocorreu um erro com o relogio!"
     }
@@ -58,6 +58,14 @@ function GameComponents(props){
         </div>
         <div className="timerDiv">
           {valid}
+          <section className="wordSection">
+
+            <span >HTMl</span>
+            <span>CSS</span>
+            <span >JS</span>
+            <span>React</span>
+            <span >VUE</span>
+          </section>
         </div>
     </div>
     

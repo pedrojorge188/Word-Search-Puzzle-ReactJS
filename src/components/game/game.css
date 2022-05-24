@@ -22,7 +22,20 @@
     display: none;
 }
 .timerDiv{
+    display: flex;
+    flex-direction: column;
     margin-left: 30px;
+}
+.timerDiv .wordSection{
+    margin-top: 10px;
+    border-top: solid 1px gray;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    font-size: 15px;
+}
+.timerDiv .wordSection span{
+    font-size: small;
 }
 .timerDiv span{
     font-size: larger;

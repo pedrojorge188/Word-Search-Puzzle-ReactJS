@@ -24,10 +24,13 @@ function App() {
     }
   };
 
+    
   const handleLevelChange = (event) => {
     const {value} = event.currentTarget;
     setSelectedLevel(value);
   }
+
+
 
   return (
     <div id="container">
