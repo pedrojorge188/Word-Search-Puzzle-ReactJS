@@ -16,11 +16,13 @@ function verifyBoardSize(selectedLevel){
   return tam;
 }
 
-function StartBoard(tam){
+function StartBoard(tam,letter){
   let board = []
   for(let i = 0;i<tam;i++){
-    let letter = "a"
-    board.push(<button className="boardButton" id={i}>{letter}</button>)
+
+    let rand = letter[Math.floor(Math.random() * 25)]; // Escolhe uma letra random do array de letras
+
+    board.push(<button className="boardButton" id={i}>{rand}</button>)
   }
   return board;
   
@@ -28,7 +30,7 @@ function StartBoard(tam){
 
 function GameComponents(props){
 
-    const {selectedLevel,gameStarted} = props
+    const {selectedLevel,gameStarted,letter} = props
 
     let className = "MainContent-inactive"
     let tam;
@@ -37,7 +39,7 @@ function GameComponents(props){
 
     tam = verifyBoardSize(selectedLevel);
 
-    board = StartBoard(tam)
+    board = StartBoard(tam,letter)
 
     if(gameStarted === true){
       className = "MainContent-active"
@@ -65,6 +67,7 @@ function GameComponents(props){
             <span >JS</span>
             <span>React</span>
             <span >VUE</span>
+            
           </section>
         </div>
     </div>

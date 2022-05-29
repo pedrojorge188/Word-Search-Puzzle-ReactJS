@@ -9,6 +9,9 @@ import {
         GameComponents
 } from "./components/route"
 
+import {
+  LETTER
+} from "./constants/index"
 
 function App() {
 
@@ -46,6 +49,7 @@ function App() {
           </div>
           <GameComponents
             gameStarted = {gameStarted}
+            letter = {LETTER}
             selectedLevel = {selectedLevel}
           />
           <Footer />
