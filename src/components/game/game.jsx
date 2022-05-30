@@ -25,7 +25,6 @@ function StartBoard(tam,letter){
     board.push(<button className="boardButton" id={i}>{rand}</button>)
   }
   return board;
-  
 }
 
 function GameComponents(props){

@@ -7,6 +7,7 @@
     margin: 1px;
     margin-top: 5px;
     text-align: center;
+    font-size: small;
 }
 .boardButton:hover{
     color: white;
@@ -24,7 +25,7 @@
 .timerDiv{
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 30px;              
 }
 .timerDiv .wordSection{
     margin-top: 10px;
