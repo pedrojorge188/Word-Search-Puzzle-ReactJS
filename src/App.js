@@ -42,6 +42,8 @@ function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
   let board = [];
+  let freeWord = [];
+  let helper;
 
   /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
@@ -72,10 +74,20 @@ function App() {
       selectWords[i] = random;
     }
   }
+  
+  /*Separar as palavras em caracteres "array" 
+  for(let j = 0;j<6;j++){
+    helper = selectWords[j]
+    freeWord[j] = helper.split("");
+  }
+  console.log(freeWord)
+ */
 
+  
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
   board = StartBoard(tam,LETTER);
+
 
 
 
