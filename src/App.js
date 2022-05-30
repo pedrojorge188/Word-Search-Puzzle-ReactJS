@@ -10,14 +10,43 @@ import {
 } from "./components/route"
 
 import {
-  LETTER
+  LETTER,
+  WORDS
 } from "./constants/index"
 
+function verifyBoardSize(selectedLevel){ 
+  /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
+  let tam = 0;
+  if(selectedLevel === "1"){
+    tam = 60;
+  }else if(selectedLevel === "2"){
+    tam = 80;
+  }else if(selectedLevel === "3"){
+    tam = 100;
+  }
+  return tam;
+}
+
+function StartBoard(tam,letter){
+  let board = []
+  for(let i = 0;i<tam;i++){
+
+    let rand = letter[Math.floor(Math.random() * 25)]; // Escolhe uma letra random do array de letras
+
+    board.push(<button className="boardButton" id={i}>{rand}</button>)
+  }
+  return board;
+}
+
 function App() {
+  /*Variaveis utilizadas no scop*/
+  let tam;
+  let board = [];
 
   /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
+  
   const handleGameStart = () => {
 
     if(gameStarted){
@@ -32,6 +61,21 @@ function App() {
     const {value} = event.currentTarget;
     setSelectedLevel(value);
   }
+
+
+  /*Palavras random*/
+  const selectWords = []
+  for(let i = 0;i<6;i++){
+    let random = WORDS[Math.floor(Math.random() * 25)];
+
+    if(selectWords.indexOf(random) === -1){
+      selectWords[i] = random;
+    }
+  }
+
+  /*Inicialização do tabuleiro*/
+  tam = verifyBoardSize(selectedLevel);
+  board = StartBoard(tam,LETTER);
 
 
 
@@ -49,7 +93,8 @@ function App() {
           </div>
           <GameComponents
             gameStarted = {gameStarted}
-            letter = {LETTER}
+            board = {board}
+            words = {selectWords}
             selectedLevel = {selectedLevel}
           />
           <Footer />
