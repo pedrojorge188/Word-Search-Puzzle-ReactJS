@@ -21,7 +21,8 @@ function randomNumber(number){
 
 function randomWords(selectWords){
   let random = randomNumber(19);
-  selectWords = WORDS.slice(random,random+6);
+
+  selectWords = WORDS.slice(random,random+6); //Para Alterar
 
   return selectWords
 }
@@ -41,28 +42,11 @@ function verifyBoardSize(selectedLevel){
 
 function StartBoard(tam,letter,freeWord){
   let board = []
-  let i;
-  let arrSize = [];
-  let startPosition
-  let direction = []; //se 0-> horizontal, 1->vertical, 3->diagonal
-
-  for(i = 0;i<tam;i++){
+  
+  for(let i = 0;i<tam;i++){
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
     board.push(<p className="boardButton" >{rand}</p>)
   } 
-
- /* for(let i=0;i<6;i++){
-    startPosition = randomNumber(tam);
-    direction[i] = randomNumber(3) //random da direção de cada palavra
-    arrSize[i] = freeWord[i].length // recebe o tamanho de cada palavra
-
-    for(let j=0;j<6;j++){
-      board[startPosition] = <button className="boardButton" >{freeWord[i][j]}</button>
-    }
- }
-*/
-console.log(freeWord[0][0]);
-
 
 
 
@@ -79,6 +63,7 @@ function App() {
 
   /*Palavras random*/
   selectWords = randomWords(selectWords);
+
   /*Separar Palavras*/
   for(let j = 0;j<6;j++){
     helper = new String(selectWords[j]) 
@@ -95,10 +80,10 @@ function App() {
       setGameStarted(false);
     }else{
       setGameStarted(true);
+    
     }
   };
 
-    
   const handleLevelChange = (event) => {
     const {value} = event.currentTarget;
     setSelectedLevel(value);
