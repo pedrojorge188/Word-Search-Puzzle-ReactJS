@@ -41,15 +41,14 @@ function verifyBoardSize(selectedLevel){
   return tam;
 }
 
-function StartBoard(tam,letter,selectWord,freeWord){
+function StartBoard(tam,letter,selectWord){
   let board = []
   let arrSize = []
 
   for(let i=0;i<6;i++){
-    arrSize[i] = freeWord[i].length
+    arrSize[i] = selectWord[i].length
   }
   
-  console.log(freeWord[0][2])
 
   for(let i = 0;i<tam;i++){
     
@@ -57,7 +56,9 @@ function StartBoard(tam,letter,selectWord,freeWord){
     board.push(<p className="boardButton" >{rand}</p>)
 
   } 
-  
+
+  board[0] = <button className="boardButton" >{selectWord[0][0]}</button>
+
   return board;
 }
 
@@ -65,9 +66,7 @@ function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
   let board = [];
-  let freeWord = [];
   let selectWords = []
-  let helper;
   let trueTime;
 
   /*Counter to end game   --- action js
@@ -77,12 +76,6 @@ function App() {
 
   /*Palavras random*/
   selectWords = randomWords(selectWords);
-
-  /*Separar Palavras*/
-  for(let j = 0;j<6;j++){
-    helper = new String(selectWords[j]) 
-    freeWord[j] = helper.split("");
-  }
   
   /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
@@ -105,7 +98,7 @@ function App() {
 
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
-  board = StartBoard(tam,LETTER,selectWords,freeWord);
+  board = StartBoard(tam,LETTER,selectWords);
 
   return (
     <div id="container">
