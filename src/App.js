@@ -30,10 +30,7 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6fbe13b9e6f37a863ffc79ec1db5c8e239dba41b
+  
   if(selectedLevel === "1"){
     tam = 80;
   }else if(selectedLevel === "2"){
