@@ -22,7 +22,8 @@ function randomNumber(number){
 
 function randomWords(selectWords){
   let random = randomNumber(19);
-  selectWords = WORDS.slice(random,random+6);
+
+  selectWords = WORDS.slice(random,random+6); //Para Alterar
 
   return selectWords
 }
@@ -30,38 +31,31 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
+<<<<<<< HEAD
   if(selectedLevel === "0"){
     tam = 0;
   }else if(selectedLevel === "1"){
     tam = 60;
   }else if(selectedLevel === "2"){
+=======
+  if(selectedLevel === "1"){
+>>>>>>> 92ade428fc59c9a792f07b187333ea5b095233f4
     tam = 80;
-  }else if(selectedLevel === "3"){
+  }else if(selectedLevel === "2"){
     tam = 100;
+  }else if(selectedLevel === "3"){
+    tam = 120;
   }
   return tam;
 }
 
 function StartBoard(tam,letter,freeWord){
   let board = []
-  let arrSize = [];
-  let startPosition = [];
-  let direction = []; //se 0-> horizontal, 1->vertical, 3->diagonal
-
-  for(let i=0;i<6;i++){
-     startPosition[i] = randomNumber(tam); //random da posição inicial de cada palavra
-     direction[i] = randomNumber(3) //random da direção de cada palavra
-  }
-
+  
   for(let i = 0;i<tam;i++){
-
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
-    board.push(<p className="boardButton" id={i}>{rand}</p>)
-    
-  }
-
-  console.log("palavra->"+freeWord[0]);
-  console.log("primeira letra->"+freeWord[0][0]);
+    board.push(<p className="boardButton" >{rand}</p>)
+  } 
 
 
 
@@ -78,6 +72,7 @@ function App() {
 
   /*Palavras random*/
   selectWords = randomWords(selectWords);
+
   /*Separar Palavras*/
   for(let j = 0;j<6;j++){
     helper = new String(selectWords[j]) 
@@ -94,10 +89,10 @@ function App() {
       setGameStarted(false);
     }else{
       setGameStarted(true);
+    
     }
   };
 
-    
   const handleLevelChange = (event) => {
     const {value} = event.currentTarget;
     setSelectedLevel(value);

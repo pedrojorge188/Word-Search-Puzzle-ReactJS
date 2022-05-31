@@ -1,6 +1,8 @@
 .boardContent{
     display: grid;
     grid-template-columns: repeat(10,20px) ;
+    box-shadow: black 2px;
+    padding: 10px;
 }
 .boardButton{
     border: none;
