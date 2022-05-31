@@ -31,10 +31,8 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
-  
+
   if(selectedLevel === "1"){
-    tam = 60;
-  }else if(selectedLevel === "2"){
     tam = 80;
   }else if(selectedLevel === "2"){
     tam = 100;
@@ -44,15 +42,18 @@ function verifyBoardSize(selectedLevel){
   return tam;
 }
 
-function StartBoard(tam,letter,freeWord){
+function StartBoard(tam,letter,selectWord,freeWord){
   let board = []
-  
+  let arrSize = []
+
+  for(let i=0;i<6;i++){
+    arrSize[i] = freeWord[i].length
+  }
+
   for(let i = 0;i<tam;i++){
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
     board.push(<p className="boardButton" >{rand}</p>)
   } 
-
-
 
   return board;
 }
@@ -95,7 +96,7 @@ function App() {
 
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
-  board = StartBoard(tam,LETTER,freeWord);
+  board = StartBoard(tam,LETTER,selectWords,freeWord);
 
   return (
     <div id="container">

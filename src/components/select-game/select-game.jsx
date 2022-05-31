@@ -11,7 +11,8 @@ function SelectGame(props){
     <div className="select-menu">
       <select className="form-select" aria-label="Default select example" 
        onChange={onLevelChange}
-       onClick={gameStarted}>
+       onClick={gameStarted}
+       disabled={gameStarted===true}>
 
         <option selected defaultValue value="0">Dificuldade</option>
         <option value= "1">Fácil</option>
