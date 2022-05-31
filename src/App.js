@@ -30,35 +30,39 @@ function verifyBoardSize(selectedLevel){
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
   if(selectedLevel === "1"){
-    tam = 60;
-  }else if(selectedLevel === "2"){
     tam = 80;
-  }else if(selectedLevel === "3"){
+  }else if(selectedLevel === "2"){
     tam = 100;
+  }else if(selectedLevel === "3"){
+    tam = 120;
   }
   return tam;
 }
 
 function StartBoard(tam,letter,freeWord){
   let board = []
+  let i;
   let arrSize = [];
-  let startPosition = [];
+  let startPosition
   let direction = []; //se 0-> horizontal, 1->vertical, 3->diagonal
 
-  for(let i=0;i<6;i++){
-     startPosition[i] = randomNumber(tam); //random da posição inicial de cada palavra
-     direction[i] = randomNumber(3) //random da direção de cada palavra
-  }
-
-  for(let i = 0;i<tam;i++){
-
+  for(i = 0;i<tam;i++){
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
-    board.push(<p className="boardButton" id={i}>{rand}</p>)
-    
-  }
+    board.push(<p className="boardButton" >{rand}</p>)
+  } 
 
-  console.log("palavra->"+freeWord[0]);
-  console.log("primeira letra->"+freeWord[0][0]);
+ /* for(let i=0;i<6;i++){
+    startPosition = randomNumber(tam);
+    direction[i] = randomNumber(3) //random da direção de cada palavra
+    arrSize[i] = freeWord[i].length // recebe o tamanho de cada palavra
+
+    for(let j=0;j<6;j++){
+      board[startPosition] = <button className="boardButton" >{freeWord[i][j]}</button>
+    }
+ }
+*/
+console.log(freeWord[0][0]);
+
 
 
 
