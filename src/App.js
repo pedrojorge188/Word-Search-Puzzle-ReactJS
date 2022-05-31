@@ -51,15 +51,11 @@ function StartBoard(tam,letter,selectWord){
   
 
   for(let i = 0;i<tam;i++){
-    
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
     board.push(<p className="boardButton" >{rand}</p>)
-
   } 
   
-  board[0] = <button className="boardButton" >{selectWord[0][0]}</button>
-  board[1] = <p className="boardButton">{arrSize[0]}</p>
-
+  
   return board;
 }
 
@@ -68,7 +64,7 @@ function App() {
   let tam;
   let board = [];
   let selectWords = []
-  let trueTime;
+  //let trueTime;
 
   /*Counter to end game   --- action js
   trueTime = setTimeout(()=>{
