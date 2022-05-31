@@ -1,9 +1,10 @@
 import "./assets/styles/App.css";
 import React from "react";
 import {useState} from "react";
-
+//randomWords ajudar
+//dificuldade 0 stress
 import {
-        Header,
+        Header,   
         Footer,
         SelectGame,
         GameComponents
@@ -30,7 +31,10 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
+  
   if(selectedLevel === "1"){
+    tam = 60;
+  }else if(selectedLevel === "2"){
     tam = 80;
   }else if(selectedLevel === "2"){
     tam = 100;
@@ -74,7 +78,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
   
-  const handleGameStart = () => {
+  const handleGameStart = () => {   //function to know when game starts
 
     if(gameStarted){
       setGameStarted(false);
