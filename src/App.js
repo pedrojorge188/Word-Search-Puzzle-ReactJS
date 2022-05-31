@@ -49,12 +49,16 @@ function StartBoard(tam,letter,selectWord,freeWord){
   for(let i=0;i<6;i++){
     arrSize[i] = freeWord[i].length
   }
+  
+  console.log(freeWord[0][2])
 
   for(let i = 0;i<tam;i++){
+    
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
     board.push(<p className="boardButton" >{rand}</p>)
-  } 
 
+  } 
+  
   return board;
 }
 
