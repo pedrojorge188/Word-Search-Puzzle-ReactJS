@@ -5,16 +5,16 @@ import Timer from "./clock/timer"
 
 function GameComponents(props){
 
-    const {gameStarted,words,board} = props
+    const {selectedLevel,gameStarted,words,board} = props
 
     let className = "MainContent-inactive"
     let timer;
 
-    if(gameStarted === true){
+    if(gameStarted === true && selectedLevel != '0'){
       className = "MainContent-active"
     }
 
-    if(gameStarted === true){
+    if(gameStarted === true && selectedLevel != '0'){
       timer = <Timer/>
     }else{
       timer = "Ocorreu um erro com o relogio!"
