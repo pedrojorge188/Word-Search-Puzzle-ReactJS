@@ -1,20 +1,23 @@
 import "./game.css";
 import React from "react";
 import Timer from "./clock/timer"
+import {useState,useEffect} from "react"
 
 
 function GameComponents(props){
 
     const {selectedLevel,gameStarted,words,board} = props
+    const [seconds,setSeconds] = useState(0);
 
     let className = "MainContent-inactive"
     let timer;
 
-    if(gameStarted === true && selectedLevel != '0'){
+    if(gameStarted === true){
       className = "MainContent-active"
+      
     }
 
-    if(gameStarted === true && selectedLevel != '0'){
+    if(gameStarted === true){
       timer = <Timer/>
     }else{
       timer = "Ocorreu um erro com o relogio!"

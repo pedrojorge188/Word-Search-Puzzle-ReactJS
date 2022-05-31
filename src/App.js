@@ -1,8 +1,7 @@
 import "./assets/styles/App.css";
 import React from "react";
 import {useState} from "react";
-//randomWords ajudar
-//dificuldade 0 stress
+
 import {
         Header,   
         Footer,
@@ -31,15 +30,7 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
-<<<<<<< HEAD
-  if(selectedLevel === "0"){
-    tam = 0;
-  }else if(selectedLevel === "1"){
-    tam = 60;
-  }else if(selectedLevel === "2"){
-=======
   if(selectedLevel === "1"){
->>>>>>> 92ade428fc59c9a792f07b187333ea5b095233f4
     tam = 80;
   }else if(selectedLevel === "2"){
     tam = 100;
@@ -69,6 +60,12 @@ function App() {
   let freeWord = [];
   let selectWords = []
   let helper;
+  let trueTime;
+
+  /*Counter to end game   --- action js
+  trueTime = setTimeout(()=>{
+
+  })*/
 
   /*Palavras random*/
   selectWords = randomWords(selectWords);
