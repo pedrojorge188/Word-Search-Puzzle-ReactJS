@@ -30,7 +30,7 @@ function randomWords(selectWords){
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = 0;
-  
+
   if(selectedLevel === "1"){
     tam = 80;
   }else if(selectedLevel === "2"){
@@ -58,6 +58,9 @@ function StartBoard(tam,letter,selectWord,freeWord){
 
   } 
   
+  board[0] = <button className="boardButton" >{selectWord[0][0]}</button>
+  board[1] = <p className="boardButton">{arrSize[0]}</p>
+
   return board;
 }
 
