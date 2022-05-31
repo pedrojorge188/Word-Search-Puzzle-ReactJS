@@ -10,9 +10,21 @@ import {
 } from "./components/route"
 
 import {
-  LETTER,
-  WORDS
+        LETTER,
+        WORDS
 } from "./constants/index"
+
+function randomNumber(number){
+  let rand = Math.floor(Math.random() * number)
+  return rand;
+}
+
+function randomWords(selectWords){
+  let random = randomNumber(19);
+  selectWords = WORDS.slice(random,random+6);
+
+  return selectWords
+}
 
 function verifyBoardSize(selectedLevel){ 
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
@@ -27,14 +39,29 @@ function verifyBoardSize(selectedLevel){
   return tam;
 }
 
-function StartBoard(tam,letter){
+function StartBoard(tam,letter,freeWord){
   let board = []
+  let arrSize = [];
+  let startPosition = [];
+  let direction = []; //se 0-> horizontal, 1->vertical, 3->diagonal
+
+  for(let i=0;i<6;i++){
+     startPosition[i] = randomNumber(tam); //random da posição inicial de cada palavra
+     direction[i] = randomNumber(3) //random da direção de cada palavra
+  }
+
   for(let i = 0;i<tam;i++){
 
-    let rand = letter[Math.floor(Math.random() * 25)]; // Escolhe uma letra random do array de letras
-
-    board.push(<button className="boardButton" id={i}>{rand}</button>)
+    let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
+    board.push(<p className="boardButton" id={i}>{rand}</p>)
+    
   }
+
+  console.log("palavra->"+freeWord[0]);
+  console.log("primeira letra->"+freeWord[0][0]);
+
+
+
   return board;
 }
 
@@ -43,8 +70,17 @@ function App() {
   let tam;
   let board = [];
   let freeWord = [];
+  let selectWords = []
   let helper;
 
+  /*Palavras random*/
+  selectWords = randomWords(selectWords);
+  /*Separar Palavras*/
+  for(let j = 0;j<6;j++){
+    helper = new String(selectWords[j]) 
+    freeWord[j] = helper.split("");
+  }
+  
   /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
@@ -64,32 +100,9 @@ function App() {
     setSelectedLevel(value);
   }
 
-
-  /*Palavras random*/
-  const selectWords = []
-  for(let i = 0;i<6;i++){
-    let random = WORDS[Math.floor(Math.random() * 25)];
-
-    if(selectWords.indexOf(random) === -1){
-      selectWords[i] = random;
-    }
-  }
-  
-  /*Separar as palavras em caracteres "array" 
-  for(let j = 0;j<6;j++){
-    helper = selectWords[j]
-    freeWord[j] = helper.split("");
-  }
-  console.log(freeWord)
- */
-
-  
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
-  board = StartBoard(tam,LETTER);
-
-
-
+  board = StartBoard(tam,LETTER,freeWord);
 
   return (
     <div id="container">
