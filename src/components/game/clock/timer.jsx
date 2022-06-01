@@ -28,8 +28,12 @@ function Timer(){
                 setMinutes(0);
                 setMinutes2(minutes2+1);
             }
-        },1000
+        },1
         )//1000 mls -> 1segundo
+
+        if(minutes === 5){
+          window.location.reload()
+        }
 
         return () => clearInterval(timer);
     });

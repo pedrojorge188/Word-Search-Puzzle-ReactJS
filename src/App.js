@@ -38,7 +38,6 @@ function verifyBoardSize(selectedLevel){
   }
   return tam;
 }
-
 function StartBoard(tam,letter,selectWord){
   let board = new Array(tam);
   for(let i=0;i<board.length;i++){
