@@ -54,11 +54,26 @@ function StartBoard(tam,letter,selectWord){
   return board;
 }
 
+function horizontal(board, posX, posY, salvar, selectWord, wordNumber){
+  let points = 0;
+  for(let i=0; i<selectWord.length; i++){
+    if(salvar[posX + i][posY] == 0){  
+      points++;
+    }
+  }
+
+  if(points === selectWord.length){
+    for(let i=0; i<selectWord.length; i++){
+        board[posX + i][posY] = <p className="boardButton" >{selectWord[wordNumber][i]}</p>
+    }
+  }
+}
 
 function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
   let board = [];
+  let salvar = [];
   let selectWords = []
 
   /*Palavras random*/
@@ -72,9 +87,8 @@ function App() {
 
     if(gameStarted){
       setGameStarted(false);
-    }else{
+    }else{      
       setGameStarted(true);
-    
     }
   };
 
