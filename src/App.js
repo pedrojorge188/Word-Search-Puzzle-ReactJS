@@ -12,7 +12,7 @@ import {
 import {
         LETTER,
         WORDS,
-        DIRECTION
+      // DIRECTION
 } from "./constants/index"
 
 function randomNumber(number){
@@ -30,50 +30,33 @@ function verifyBoardSize(selectedLevel){
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = []
   if(selectedLevel === "1"){
-    tam = 80; //10 linhas, 8 colunas
+    tam = 9;
   }else if(selectedLevel === "2"){
-    tam = 100; //10 linhas , 10 colunas
+    tam = 10;
   }else if(selectedLevel === "3"){
-    tam = 120; //12 linhas , 10 colunas
+    tam = 11;
   }
   return tam;
 }
 
-/*function diagonalUp(width, lenght){
-  for(let i = 0; i<6; i++){
-    for(b = 0, a = 0; b<arrSize[i]; b++, a++){
-      board[][] = <button className="boardButton" >{selectWord[i][b]}</button>
-    }
-}*/
 function StartBoard(tam,letter,selectWord){
-  let board = []
-  let arrSize = []
-  let space = 0;
-  let b, a, c = 0;
+  let board = new Array(tam);
 
-  
-
-  for(let i = 0;i<tam;i++){
-    let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
-    board.push(<p className="boardButton" >{rand}</p>)
-
-  } 
-
-/*  for(let i = 0; i<6; i++){
-    size += arrSize[i]; //Espaço ocupado por palavras
+  for(let i=0;i<board.length;i++){
+    board[i] = new Array(tam);
   }
-  rSize = tam - size;  //Espaço restante
 
-  for(let i = 0; i<6; i++){
-    c = randomNumber(10);
-    space += c;
-    for(b = 0, a = 0; b<arrSize[i]; b++, a++){
-      board[space + a] = <button className="boardButton" >{selectWord[i][b]}</button>
+  for(let i=0;i<tam;i++){
+    for(let j=0;j<tam;j++){
+      let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
+      board[i][j] = <p className="boardButton" >{rand}</p>
     }
-    space += a;
-  } 
-*/
+  }
 
+  //Debug CODE ----
+  board[0][0] = <button className="boardButton" >{selectWord[0][0]}</button>
+  board[1][1] = <button className="boardButton" >{selectWord[0][1]}</button>
+  board[2][2] = <button  className="boardButton" >{selectWord[0][2]}</button>
 
   return board;
 }

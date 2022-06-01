@@ -1,13 +1,10 @@
 import "./game.css";
 import React from "react";
 import Timer from "./clock/timer"
-import {useState,useEffect} from "react"
-
 
 function GameComponents(props){
 
     const {selectedLevel,gameStarted,words,board} = props
-    const [seconds,setSeconds] = useState(0);
 
     let className = "MainContent-inactive"
     let timer;
