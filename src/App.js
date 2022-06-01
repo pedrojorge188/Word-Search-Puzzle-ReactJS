@@ -52,54 +52,54 @@ function StartBoard(tam,letter,selectWord){
   }
   return board;
 }
-function horizontal(board, posY, posX, savePositions, selectWord, wordNumber){
-  let points = 0;
+function horizontal(board, posY, posX, selectWord, wordNumber,tam){
+  let wordSize = selectWord[wordNumber].length;
+  let extraRand ;
+
+  do{
+    extraRand = randomNumber(tam);
+    posX = extraRand;
+    posY = extraRand;
+  }while(posX+wordSize>tam)
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posY][posX + i] === 0){  
-      points++;
-    }
+    board[posY][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
   }
 
-  if(points === selectWord[wordNumber].length){
-    for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posY][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
-    }
+  
+}
+function vertical(board, posY, posX, selectWord, wordNumber,tam){
+  let wordSize = selectWord[wordNumber].length;
+  let extraRand ;
+
+  do{
+    extraRand = randomNumber(tam);
+    posX = extraRand;
+    posY = extraRand;
+  }while(posY+wordSize>tam)
+
+  for(let i=0; i<selectWord[wordNumber].length; i++){
+    board[posY + i][posX] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
   }
   
 }
-function horizontalBack(board, posY, posX, savePositions, selectWord, wordNumber){
-  let points = 0;
+
+function diagonal(board, posY, posX, selectWord, wordNumber,tam){
+  let wordSize = selectWord[wordNumber].length;
+  let extraRand ;
+
+  do{
+    extraRand = randomNumber(tam);
+    posX = extraRand;
+    posY = extraRand;
+  }while(posY+wordSize>tam || posX+wordSize>tam)
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posY][posX - i] === 0){  
-      points++;
-    }
-  }
-
-  if(points === selectWord[wordNumber].length){
-    for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posY][posX - i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
-    }
+    board[posY + i][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
   }
   
 }
-function vertical(board, posY, posX, savePositions, selectWord, wordNumber){
-  let points = 0;
 
-  for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posY + i][posX] === 0){  
-      points++;
-    }
-  }
-
-  if(points === selectWord[wordNumber].length){
-    for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posY + i][posX] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
-    }
-  }
-  
-}
 
 function startSaveArray(tam,savePositions){
   for(let i=0;i<savePositions.length;i++){
@@ -118,14 +118,11 @@ function gameSetup(tam,board,selectWord){
     let random 
     savePositions = startSaveArray(tam,savePositions);
   
-    for(let i=0;i<6;i++){
-      random = randomNumber(tam)
-      horizontal(board,random,random,savePositions,selectWord,i);
-    }
+
+    random = randomNumber(tam)
+    diagonal(board,random,random,selectWord,0,tam);
 
 }
-
-
 function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
