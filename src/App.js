@@ -47,7 +47,7 @@ function StartBoard(tam,letter,selectWord){
   let size = 0;
   let rSize = 0;
   let space = 0;
-  let b, a = 0;
+  let b, a, c = 0;
 
   for(let i=0;i<6;i++){
     arrSize[i] = selectWord[i].length
@@ -57,25 +57,25 @@ function StartBoard(tam,letter,selectWord){
   for(let i = 0;i<tam;i++){
     
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
-    board.push(<button className="boardButton" >{rand}</button>)
+    board.push(<p className="boardButton" >{rand}</p>)
 
   } 
 
-  for(let i = 0; i<6; i++){
+/*  for(let i = 0; i<6; i++){
     size += arrSize[i]; //Espaço ocupado por palavras
   }
   rSize = tam - size;  //Espaço restante
 
-    for(let i = 0; i<6; i++){
-      for(b = 0, a = 0; b<arrSize[i]; b++, a++){
-        board[space + a] = <button className="boardButton" >{selectWord[i][b]}</button>
-      }
-      space += a;
-    } 
-  
-  console.log()
-  //board[0] = <button className="boardButton" >{selectWord[0][0]}</button>
-  //board[1] = <p className="boardButton">{arrSize[0]}</p>
+  for(let i = 0; i<6; i++){
+    c = randomNumber(10);
+    space += c;
+    for(b = 0, a = 0; b<arrSize[i]; b++, a++){
+      board[space + a] = <button className="boardButton" >{selectWord[i][b]}</button>
+    }
+    space += a;
+  } 
+*/
+
 
   return board;
 }
