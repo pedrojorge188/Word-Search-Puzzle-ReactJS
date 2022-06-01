@@ -31,11 +31,6 @@ function Timer(){
         },1
         )//1000 mls -> 1segundo
 
-        if(minutes === 5){
-          alert("O seu tempo terminou!!");
-          window.location.reload()
-        }
-
         return () => clearInterval(timer);
     });
 
