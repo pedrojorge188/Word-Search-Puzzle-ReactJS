@@ -30,11 +30,11 @@ function verifyBoardSize(selectedLevel){
   /*Função responsavel por verificar a dimensão do tabuleiro conforme a dificuldade escolhida pelo utilizador*/
   let tam = []
   if(selectedLevel === "1"){
-    tam = 9;
-  }else if(selectedLevel === "2"){
-    tam = 10;
-  }else if(selectedLevel === "3"){
     tam = 11;
+  }else if(selectedLevel === "2"){
+    tam = 12;
+  }else if(selectedLevel === "3"){
+    tam = 13;
   }
   return tam;
 }
@@ -52,22 +52,39 @@ function StartBoard(tam,letter,selectWord){
   }
   return board;
 }
-function horizontal(board, posX, posY, savePositions, selectWord, wordNumber){
+function horizontal(board, posY, posX, savePositions, selectWord, wordNumber){
   let points = 0;
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posX + i][posY] == 0){  
+    if(savePositions[posY][posX + i] == 0){  
       points++;
     }
   }
 
   if(points === selectWord[wordNumber].length){
     for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posX + i][posY] = <p className="boardButton" >{selectWord[wordNumber][i]}</p>
+        board[posY][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
     }
   }
   
 }
+function horizontalBack(board, posY, posX, savePositions, selectWord, wordNumber){
+  let points = 0;
+
+  for(let i=0; i<selectWord[wordNumber].length; i++){
+    if(savePositions[posY][posX - i] == 0){  
+      points++;
+    }
+  }
+
+  if(points === selectWord[wordNumber].length){
+    for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY][posX - i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
+    }
+  }
+  
+}
+
 function startSaveArray(tam,savePositions){
   for(let i=0;i<savePositions.length;i++){
     savePositions[i] = new Array(tam);
@@ -82,10 +99,11 @@ function startSaveArray(tam,savePositions){
 }
 function gameSetup(tam,board,selectWord){
     let savePositions = new Array(tam);
+    let random = randomNumber(tam)
     savePositions = startSaveArray(tam,savePositions);
 
     if(tam>0){
-      horizontal(board,0,0,savePositions,selectWord,0);
+     horizontalBack(board,random,random,savePositions,selectWord,0);
     }
 }
 

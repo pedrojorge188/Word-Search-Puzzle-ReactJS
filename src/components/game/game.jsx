@@ -10,11 +10,11 @@ function GameComponents(props){
     let timer;
 
     if(selectedLevel === "1"){
-      document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(9,25px)';
-    }else if(selectedLevel === "2"){
-      document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(10,25px)';
-    }else if(selectedLevel === "3"){
       document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(11,25px)';
+    }else if(selectedLevel === "2"){
+      document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(12,25px)';
+    }else if(selectedLevel === "3"){
+      document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(13,25px)';
     }
 
     if(gameStarted === true){
