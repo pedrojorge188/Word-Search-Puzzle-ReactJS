@@ -52,33 +52,43 @@ function StartBoard(tam,letter,selectWord){
   }
   return board;
 }
-function gameSetup(tam){
-    let savePositions = new Array(tam);
-    for(let i=0;i<savePositions.length;i++){
-      savePositions[i] = new Array(tam);
-    }
-    for(let i=0;i<tam;i++){
-      for(let j=0;j<tam;j++){
-        savePositions[i][j] = 0;
-      }
-    }
-
-    console.log(savePositions);
-}
 function horizontal(board, posX, posY, savePositions, selectWord, wordNumber){
   let points = 0;
-  for(let i=0; i<selectWord.length; i++){
+
+  for(let i=0; i<selectWord[wordNumber].length; i++){
     if(savePositions[posX + i][posY] == 0){  
       points++;
     }
   }
 
-  if(points === selectWord.length){
-    for(let i=0; i<selectWord.length; i++){
+  if(points === selectWord[wordNumber].length){
+    for(let i=0; i<selectWord[wordNumber].length; i++){
         board[posX + i][posY] = <p className="boardButton" >{selectWord[wordNumber][i]}</p>
     }
   }
+  
 }
+function startSaveArray(tam,savePositions){
+  for(let i=0;i<savePositions.length;i++){
+    savePositions[i] = new Array(tam);
+  }
+  for(let i=0;i<tam;i++){
+    for(let j=0;j<tam;j++){
+      savePositions[i][j] = 0;
+    }
+  }
+  
+  return savePositions;
+}
+function gameSetup(tam,board,selectWord){
+    let savePositions = new Array(tam);
+    savePositions = startSaveArray(tam,savePositions);
+
+    if(tam>0){
+      horizontal(board,0,0,savePositions,selectWord,0);
+    }
+}
+
 
 function App() {
   /*Variaveis utilizadas no scop*/
@@ -110,8 +120,10 @@ function App() {
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
   board = StartBoard(tam,LETTER,selectWords);
-  gameSetup(tam);
-  
+
+  /*Game Setup -> Regras de posicionamento das palavras na função*/
+  gameSetup(tam,board,selectWords);
+
   return (
     <div id="container">
       <React.StrictMode>
