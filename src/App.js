@@ -133,13 +133,14 @@ function gameSetup(tam,board,selectWord){
     let  randomPosition , randomDirection
     randomPosition = randomNumber(tam)
 
-    for(let i=0;i<6;i++){
-      randomPosition = randomNumber(tam)
-      randomDirection = DIRECTION[randomNumber(6)]
-
-      selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+    if(tam > 0){
+      for(let i=0;i<6;i++){
+        randomPosition = randomNumber(tam)
+        randomDirection = DIRECTION[randomNumber(6)]
+  
+        selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+      }
     }
-
 }
 function App() {
   /*Variaveis utilizadas no scop*/
