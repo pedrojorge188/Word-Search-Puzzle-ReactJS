@@ -12,7 +12,7 @@ import {
 import {
         LETTER,
         WORDS,
-      // DIRECTION
+       DIRECTION
 } from "./constants/index"
 
 function randomNumber(number){
@@ -52,6 +52,7 @@ function StartBoard(tam,letter,selectWord){
   }
   return board;
 }
+
 function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   let wordSize = selectWord[wordNumber].length;
   let extraRand ;
@@ -66,8 +67,8 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam){
     board[posY][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
   }
 
-  
 }
+
 function vertical(board, posY, posX, selectWord, wordNumber,tam){
   let wordSize = selectWord[wordNumber].length;
   let extraRand ;
@@ -79,7 +80,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   }while(posY+wordSize>tam)
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY + i][posX] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
+    board[posY + i][posX] = <button className="boardButton">{selectWord[wordNumber][i]}</button>
   }
   
 }
@@ -95,32 +96,49 @@ function diagonal(board, posY, posX, selectWord, wordNumber,tam){
   }while(posY+wordSize>tam || posX+wordSize>tam)
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY + i][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
+    board[posY + i][posX + i] = <button className="boardButton">{selectWord[wordNumber][i]}</button>
   }
   
 }
 
+function reverseString(str) {
 
-function startSaveArray(tam,savePositions){
-  for(let i=0;i<savePositions.length;i++){
-    savePositions[i] = new Array(tam);
+  let newString = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+      newString += str[i];
   }
-  for(let i=0;i<tam;i++){
-    for(let j=0;j<tam;j++){
-      savePositions[i][j] = 0;
-    }
+  return newString;
+}
+
+function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
+  let inverseWord = []
+  if(direction === "horizontal"){
+    horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+  }else if(direction === "horizontalBack"){
+    inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
+    horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
+  }else if(direction === "vertical"){
+    vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+  }else if(direction === "verticalUp"){
+    inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
+    vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
+  }else if(direction === "diagonal"){
+    diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+  }else if(direction === "inverseDiagonal"){
+    inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
+    diagonal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam);
   }
-  
-  return savePositions;
 }
 function gameSetup(tam,board,selectWord){
-    let savePositions = new Array(tam);
-    let random 
-    savePositions = startSaveArray(tam,savePositions);
-  
+    let  randomPosition , randomDirection
+    randomPosition = randomNumber(tam)
 
-    random = randomNumber(tam)
-    diagonal(board,random,random,selectWord,0,tam);
+    for(let i=0;i<6;i++){
+      randomPosition = randomNumber(tam)
+      randomDirection = DIRECTION[randomNumber(6)]
+
+      selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+    }
 
 }
 function App() {

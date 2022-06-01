@@ -9,6 +9,6 @@ export const LETTER = [
 ];
 
 export const DIRECTION = ['horizontal','horizontalBack','vertical','verticalUp',
-                           'diagonal','diagonalUp','diagonalBack','diagonalUpBack'];
+                           'diagonal','inverseDiagonal'];
 
 
