@@ -53,11 +53,6 @@ function StartBoard(tam,letter,selectWord){
     }
   }
 
-  //Debug CODE ----
-  board[0][0] = <button className="boardButton" >{selectWord[0][0]}</button>
-  board[1][1] = <button className="boardButton" >{selectWord[0][1]}</button>
-  board[2][2] = <button  className="boardButton" >{selectWord[0][2]}</button>
-
   return board;
 }
 
