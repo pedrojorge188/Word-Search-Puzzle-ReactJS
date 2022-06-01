@@ -52,11 +52,23 @@ function StartBoard(tam,letter,selectWord){
   }
   return board;
 }
+function gameSetup(tam){
+    let savePositions = new Array(tam);
+    for(let i=0;i<savePositions.length;i++){
+      savePositions[i] = new Array(tam);
+    }
+    for(let i=0;i<tam;i++){
+      for(let j=0;j<tam;j++){
+        savePositions[i][j] = 0;
+      }
+    }
 
-function horizontal(board, posX, posY, salvar, selectWord, wordNumber){
+    console.log(savePositions);
+}
+function horizontal(board, posX, posY, savePositions, selectWord, wordNumber){
   let points = 0;
   for(let i=0; i<selectWord.length; i++){
-    if(salvar[posX + i][posY] == 0){  
+    if(savePositions[posX + i][posY] == 0){  
       points++;
     }
   }
@@ -72,7 +84,6 @@ function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
   let board = [];
-  let salvar = [];
   let selectWords = []
 
   /*Palavras random*/
@@ -99,7 +110,8 @@ function App() {
   /*Inicialização do tabuleiro*/
   tam = verifyBoardSize(selectedLevel);
   board = StartBoard(tam,LETTER,selectWords);
-
+  gameSetup(tam);
+  
   return (
     <div id="container">
       <React.StrictMode>

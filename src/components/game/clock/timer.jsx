@@ -28,7 +28,7 @@ function Timer(){
                 setMinutes(0);
                 setMinutes2(minutes2+1);
             }
-        },1
+        },1000
         )//1000 mls -> 1segundo
 
         return () => clearInterval(timer);
