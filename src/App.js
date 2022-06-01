@@ -41,7 +41,6 @@ function verifyBoardSize(selectedLevel){
 
 function StartBoard(tam,letter,selectWord){
   let board = new Array(tam);
-
   for(let i=0;i<board.length;i++){
     board[i] = new Array(tam);
   }
@@ -52,11 +51,6 @@ function StartBoard(tam,letter,selectWord){
       board[i][j] = <p className="boardButton" >{rand}</p>
     }
   }
-
-  //Debug CODE ----
-  board[0][0] = <button className="boardButton" >{selectWord[0][0]}</button>
-  board[1][1] = <button className="boardButton" >{selectWord[0][1]}</button>
-  board[2][2] = <button  className="boardButton" >{selectWord[0][2]}</button>
 
   return board;
 }
