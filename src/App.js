@@ -56,7 +56,7 @@ function horizontal(board, posY, posX, savePositions, selectWord, wordNumber){
   let points = 0;
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posY][posX + i] == 0){  
+    if(savePositions[posY][posX + i] === 0){  
       points++;
     }
   }
@@ -72,7 +72,7 @@ function horizontalBack(board, posY, posX, savePositions, selectWord, wordNumber
   let points = 0;
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    if(savePositions[posY][posX - i] == 0){  
+    if(savePositions[posY][posX - i] === 0){  
       points++;
     }
   }
@@ -80,6 +80,22 @@ function horizontalBack(board, posY, posX, savePositions, selectWord, wordNumber
   if(points === selectWord[wordNumber].length){
     for(let i=0; i<selectWord[wordNumber].length; i++){
         board[posY][posX - i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
+    }
+  }
+  
+}
+function vertical(board, posY, posX, savePositions, selectWord, wordNumber){
+  let points = 0;
+
+  for(let i=0; i<selectWord[wordNumber].length; i++){
+    if(savePositions[posY + i][posX] === 0){  
+      points++;
+    }
+  }
+
+  if(points === selectWord[wordNumber].length){
+    for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY + i][posX] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
     }
   }
   
@@ -99,12 +115,14 @@ function startSaveArray(tam,savePositions){
 }
 function gameSetup(tam,board,selectWord){
     let savePositions = new Array(tam);
-    let random = randomNumber(tam)
+    let random 
     savePositions = startSaveArray(tam,savePositions);
-
-    if(tam>0){
-     horizontalBack(board,random,random,savePositions,selectWord,0);
+  
+    for(let i=0;i<6;i++){
+      random = randomNumber(tam)
+      horizontal(board,random,random,savePositions,selectWord,i);
     }
+
 }
 
 
