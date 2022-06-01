@@ -51,7 +51,6 @@ function StartBoard(tam,letter,selectWord){
       board[i][j] = <p className="boardButton" >{rand}</p>
     }
   }
-
   return board;
 }
 
