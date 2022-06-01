@@ -39,7 +39,12 @@ function verifyBoardSize(selectedLevel){
   return tam;
 }
 
-
+/*function diagonalUp(width, lenght){
+  for(let i = 0; i<6; i++){
+    for(b = 0, a = 0; b<arrSize[i]; b++, a++){
+      board[][] = <button className="boardButton" >{selectWord[i][b]}</button>
+    }
+}*/
 function StartBoard(tam,letter,selectWord){
   let board = []
   let arrSize = []
@@ -51,7 +56,6 @@ function StartBoard(tam,letter,selectWord){
   for(let i = 0;i<tam;i++){
     let rand = letter[randomNumber(25)]; // Escolhe uma letra random do array de letras
     board.push(<p className="boardButton" >{rand}</p>)
-<<<<<<< HEAD
 
   } 
 
@@ -64,24 +68,13 @@ function StartBoard(tam,letter,selectWord){
     c = randomNumber(10);
     space += c;
     for(b = 0, a = 0; b<arrSize[i]; b++, a++){
-=======
-  } 
-
-
-  for(let i = 0; i<6; i++){
-    for(b = 0, a = 0; b<selectWord[i].length; b++, a++){
->>>>>>> 1019d4c1c71f4c81f9fd7946c6084f3041ba1359
       board[space + a] = <button className="boardButton" >{selectWord[i][b]}</button>
     }
     space += a;
   } 
-<<<<<<< HEAD
 */
 
 
-=======
-  
->>>>>>> 1019d4c1c71f4c81f9fd7946c6084f3041ba1359
   return board;
 }
 
