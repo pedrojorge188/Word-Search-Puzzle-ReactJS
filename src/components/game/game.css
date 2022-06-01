@@ -1,6 +1,6 @@
 .boardContent{
     display: grid;
-    grid-template-columns: repeat(10,20px) ;
+    grid-template-columns: repeat(10,25px) ;
     box-shadow: black 2px;
     padding: 10px;
 }
