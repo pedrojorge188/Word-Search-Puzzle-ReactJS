@@ -12,13 +12,14 @@ import {
 import {
         LETTER,
         WORDS,
-       DIRECTION
+        DIRECTION
 } from "./constants/index"
 
 function randomNumber(number){
   let rand = Math.floor(Math.random() * number)
   return rand;
 }
+
 function randomWords(selectWords){
   let random = randomNumber(19);
 
@@ -66,7 +67,6 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   for(let i=0; i<selectWord[wordNumber].length; i++){
     board[posY][posX + i] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
   }
-
 }
 
 function vertical(board, posY, posX, selectWord, wordNumber,tam){
@@ -129,6 +129,7 @@ function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumbe
     diagonal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam);
   }
 }
+
 function gameSetup(tam,board,selectWord){
     let  randomPosition , randomDirection
     randomPosition = randomNumber(tam)
@@ -138,10 +139,11 @@ function gameSetup(tam,board,selectWord){
         randomPosition = randomNumber(tam)
         randomDirection = DIRECTION[randomNumber(6)]
   
-        selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+       selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
       }
     }
 }
+
 function App() {
   /*Variaveis utilizadas no scop*/
   let tam;
@@ -175,7 +177,7 @@ function App() {
 
   /*Game Setup -> Regras de posicionamento das palavras na função*/
   gameSetup(tam,board,selectWords);
-
+  
   return (
     <div id="container">
       <React.StrictMode>

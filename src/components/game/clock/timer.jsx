@@ -34,8 +34,6 @@ function Timer(){
         return () => clearInterval(timer);
     });
 
-
-
     return(
             
             <span>{minutes2}{minutes}:{seconds2}{seconds}</span>
