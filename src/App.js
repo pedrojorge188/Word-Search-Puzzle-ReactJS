@@ -1,6 +1,6 @@
 import "./assets/styles/App.css";
 import React from "react";
-import {useState,useEffect} from "react";
+import {useState} from "react";
 
 import {
         Header,   
@@ -17,9 +17,12 @@ import {
 } from "./constants/index"
 
 import{
+
     selectDirection,
     randomNumber,
     StartBoard,
+    checkWords
+
 }from "./helpers/index.router"
 
 
@@ -34,16 +37,19 @@ function randomWords(selectWords,wordSize){
 function gameSetup(tam,board,selectWord,wordSize){
     let  randomPosition , randomDirection
     randomPosition = randomNumber(tam)
-
-    if(tam > 0){
+    let next = 3;
+    
+    if(next < tam){
       for(let i=0;i<wordSize;i++){
-        randomPosition = randomNumber(tam)
+        randomPosition = randomNumber(tam);
         randomDirection = DIRECTION[randomNumber(6)]
   
-       selectDirection(randomDirection,randomPosition,board,selectWord,tam,i,wordSize);
+       selectDirection(randomDirection,randomPosition+next,board,selectWord,tam,i,wordSize);
+       next++;
       }
     }
 }
+
 
 function App() {
   /*Variaveis utilizadas no scop*/
@@ -86,11 +92,12 @@ function App() {
   selectWords = randomWords(selectWords,wordSize);
   
   //Inicialização do Board
-  board = StartBoard(tam,LETTER);
+  board = StartBoard(tam,LETTER,selectWords);
 
   /*Game Setup -> Regras de posicionamento das palavras na função*/
   gameSetup(tam,board,selectWords,wordSize);
   
+
   return (
     <div id="container">
       <React.StrictMode>
