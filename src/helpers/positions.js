@@ -3,6 +3,7 @@ import randomNumber from "./randNum";
 function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
   let extraRand;
+  let next;
 
   let valid = 0;
 
@@ -14,7 +15,7 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam){
           extraRand = randomNumber(tam);
           posX = extraRand;
           posY = extraRand;
-          
+        
         }while(posX+wordLength>tam )
       }
 
@@ -54,7 +55,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
       }
 
       for(let i=0;i<wordLength;i++){
-        if(board[posY  + i ][posX].props.id !== "btn"){
+        if(board[posY + i][posX].props.id !== "btn"){
           valid = 1;
         }else{
           valid = 0;
@@ -82,8 +83,8 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
 
         do{
           extraRand = randomNumber(tam);
-          randStandX = randomNumber(4);
-          randStandY = randomNumber(4);
+          randStandX = randomNumber(5);
+          randStandY = randomNumber(5);
 
           posX = extraRand+randStandX;
           posY = extraRand+randStandY;

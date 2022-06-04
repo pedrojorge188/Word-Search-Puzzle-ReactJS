@@ -1,7 +1,7 @@
 
 export const WORDS = [
      'HTML','CSS','VUEJS','REACT','ANGULAR','NUMERO', 'WEB', 'MOBILE',"PHP", "JAVA","SWIFT", "KOTLIN","PYTHON", 
-    "RUBY","TYPESCRIPT", "BOOTSTRAP", "FRAMEWORK","BASIC", "SOFTWARE","HARDWARE", "BUG", "DEBUG","VSCODE", "IDE", "ENGINEER"]       
+    "RUBY","JS", "AI", "NET","BASIC", "WORK","ISEC", "BUG", "DEBUG","VSCODE", "IDE", "ENGINEER"]       
      
 
 export const LETTER = [
