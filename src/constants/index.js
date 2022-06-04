@@ -11,4 +11,4 @@ export const LETTER = [
 export const DIRECTION = ['horizontal','horizontalBack','vertical','verticalUp',
                            'diagonal','inverseDiagonal'];
 
-
+export const TIME_OUT_GAME = 60;

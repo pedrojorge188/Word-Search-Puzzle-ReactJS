@@ -20,7 +20,7 @@ function SelectGame(props){
         <option value= "3">Avançado</option>
 
       </select>
-      <button type="button" class="btn btn-outline-success play-button" id="play-button"
+      <button type="button" className="btn btn-outline-success play-button" id="play-button"
       disabled={selectedLevel==="0"}
       onClick={onGameStart}>{gameStarted ? "Parar" : "Iniciar"}</button>
     </div>
