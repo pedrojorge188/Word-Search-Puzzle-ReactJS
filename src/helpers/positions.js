@@ -65,7 +65,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
 
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY + i][posX] = <button className="boardButton">{selectWord[wordNumber][i]}</button>
+    board[posY + i][posX] = <button className="boardButton" id="btn">{selectWord[wordNumber][i]}</button>
   }
   
   }
@@ -102,7 +102,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
     }while(valid === 0)
   
     for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX + i] = <button className="boardButton" id={i}>{selectWord[wordNumber][i]}</button>
+      board[posY + i][posX + i] = <button className="boardButton" id="btn">{selectWord[wordNumber][i]}</button>
     }
   }
   
