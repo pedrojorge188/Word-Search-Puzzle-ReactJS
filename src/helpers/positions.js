@@ -4,7 +4,6 @@ import randomNumber from "./randNum";
 function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
   let extraRand;
-  let valid = 1;
 
     do{
 
@@ -72,9 +71,47 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   }
   
   export default function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
+
     let inverseWord = []
 
-  
+    if(selectWord.length === 4){
+      if(wordNumber === 0){
+        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
+      }else if(wordNumber === 1){
+        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
+      }else if(wordNumber === 2){
+        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
+      }else if(wordNumber === 3){
+        diagonal(board,randomPosition,randomPosition,selectWord,3,tam);
+      }
+    }else if(selectWord.length === 5){
+      if(wordNumber === 0){
+        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
+      }else if(wordNumber === 1){
+        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
+      }else if(wordNumber === 2){
+        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
+      }else if(wordNumber === 3){
+        horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
+      }else if(wordNumber === 4){
+        vertical(board,randomPosition,randomPosition,selectWord,4,tam);
+      }
+    }else if(selectWord.length === 6){
+      if(wordNumber === 0){
+        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
+      }else if(wordNumber === 1){
+        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
+      }else if(wordNumber === 2){
+        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
+      }else if(wordNumber === 3){
+        horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
+      }else if(wordNumber === 4){
+        vertical(board,randomPosition,randomPosition,selectWord,4,tam);
+      }else if(wordNumber === 5){
+        vertical(board,randomPosition,randomPosition,selectWord,5,tam);
+      }
+    }
+    
     /*
     if(direction === "horizontal"){
       horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)

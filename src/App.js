@@ -21,7 +21,6 @@ import{
     selectDirection,
     randomNumber,
     StartBoard,
-    checkWords
 
 }from "./helpers/index.router"
 
@@ -36,27 +35,25 @@ function randomWords(selectWords,wordSize){
 
 function gameSetup(tam,board,selectWord,wordSize){
     let  randomPosition , randomDirection
-    randomPosition = randomNumber(tam)
-    let next = 3;
+    randomPosition = randomNumber(tam);
     
-    if(next < tam){
+    if(tam>0){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
-        randomDirection = DIRECTION[randomNumber(6)]
+        randomDirection = DIRECTION[randomNumber(6)];
   
-       selectDirection(randomDirection,randomPosition+next,board,selectWord,tam,i,wordSize);
-       next++;
+        selectDirection(randomDirection,randomPosition,board,selectWord,tam,i,wordSize);
       }
     }
+    
 }
 
 
 function App() {
-  /*Variaveis utilizadas no scop*/
+  /*Variaveis utilizadas no scope*/
   let tam, wordSize;
   let board = [];
   let selectWords = []
-  let timer;
 
   /*Variveis de estado responsaveis pela manipulação de dados de inicio e fim de jogo*/
   const [gameStarted, setGameStarted] = useState(false);
@@ -115,7 +112,6 @@ function App() {
             board = {board}
             words = {selectWords}
             selectedLevel = {selectedLevel}
-            timer = {timer}
           />
           <Footer />
       </React.StrictMode>
