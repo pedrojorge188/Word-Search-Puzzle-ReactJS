@@ -37,17 +37,13 @@ function randomWords(selectWords,wordSize){
 function gameSetup(tam,board,selectWord,wordSize){
     let  randomPosition , randomDirection
     randomPosition = randomNumber(tam)
-    let next = 3;
     
-    if(next < tam){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
         randomDirection = DIRECTION[randomNumber(6)]
   
-       selectDirection(randomDirection,randomPosition+next,board,selectWord,tam,i,wordSize);
-       next++;
+       selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
       }
-    }
 }
 
 

@@ -1,40 +1,45 @@
 import randomNumber from "./randNum";
 import checkWords from "./check"
 
+
 function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
   let extraRand;
   let startId = 144;
-
   let valid = 0;
 
-    do{
 
-      if(valid === 0){
+  while(valid === 0){
 
         do{
           extraRand = randomNumber(tam);
           posX = extraRand;
           posY = extraRand;
-        
-        }while(posX+wordLength>tam )
-      }
+        }while(posX+wordLength>tam)
 
       for(let i=0;i<wordLength;i++){
         if(board[posY][posX + i].props.className !== "use"){
           valid = 1;
+
+          for(let j=0; j<selectWord[wordNumber].length; j++){
+            board[posY][posX + j] = <button className="boardButton use" id={startId+j} onClick={() => checkWords(selectWord,1,startId+j)}>{selectWord[wordNumber][j]}</button>
+            
+          }
+
         }else{
           valid = 0;
         }
-      }
 
-    }while(valid === 0)
+      console.log(board)
 
-
-  for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY][posX + i] = <button className="boardButton use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
+    }
   }
-  
+    /*if(valid !== 0){
+      for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY][posX + i] = <button className="boardButton use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
+      }
+    }*/
+
 }
 function vertical(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
@@ -66,10 +71,13 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
 
     }while(valid === 0)
 
+    if(valid !== 0){
+      for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY + i][posX] = <button className="boardButton  use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
+      }
+    }
 
-  for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY + i][posX] = <button className="boardButton  use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
-  }
+  
   
   }
   
@@ -103,10 +111,13 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
       }
 
     }while(valid === 0)
-  
-    for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX + i] = <button className="boardButton  use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
+
+    if(valid !== 0){
+      for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY + i][posX + i] = <button className="boardButton  use" id={startId+i} onClick={() => checkWords(selectWord,1,startId+i)}>{selectWord[wordNumber][i]}</button>
+      }
     }
+    
   }
   function Adiagonal(board, posY, posX, selectWord, wordNumber,tam){
     let wordLength = selectWord[wordNumber].length;
@@ -155,6 +166,8 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   
   export default function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
     let inverseWord = []
+
+    direction = "horizontal";
 
     if(direction === "horizontal"){
       horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
