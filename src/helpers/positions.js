@@ -32,11 +32,11 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
         posX = extraRand;
         posY = extraRand;
         
-    }while(posX+wordLength>tam)
+    }while(posX+wordLength>tam || isNaN(board[posY][posX].props.id) === true)
 
 
     for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX] = <button className="boardButton" >{selectWord[wordNumber][i]}</button>
+      board[posY + i][posX] = <button className="boardButton" id={selectWord[wordNumber][i]}>{selectWord[wordNumber][i]}</button>
     }
   
   }
@@ -55,10 +55,10 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
           posX = extraRand+randStandX;
           posY = extraRand+randStandY;
           
-        }while(posX+wordLength>tam || posY+wordLength>tam)
+        }while(posX+wordLength>tam || posY+wordLength>tam || isNaN(board[posY][posX].props.id) === true)
       
     for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX + i] = <button className="boardButton">{selectWord[wordNumber][i]}</button>
+      board[posY + i][posX + i] = <button className="boardButton" id={selectWord[wordNumber][i]}>{selectWord[wordNumber][i]}</button>
     }
   }
   
@@ -74,6 +74,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   export default function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
     let inverseWord = []
 
+  
     /*
     if(direction === "horizontal"){
       horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
@@ -92,5 +93,8 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
       diagonal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
     }
     */
-    horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+
+
+    //diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+    //vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
   }
