@@ -12,7 +12,6 @@ import {
 import {
         LETTER,
         WORDS,
-        DIRECTION,
         
 } from "./constants/index"
 
@@ -41,7 +40,7 @@ function gameSetup(tam,board,selectWord,wordSize){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
   
-       selectDirection(DIRECTION,randomPosition,board,selectWord,tam,i);
+       selectDirection(randomPosition,board,selectWord,tam,i);
       }
     }
 

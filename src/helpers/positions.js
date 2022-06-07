@@ -1,6 +1,4 @@
 import randomNumber from "./randNum";
-
-
 function horizontal(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
   let extraRand;
@@ -41,13 +39,11 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   }
 
   /*function runDiagonal(board, posY, posX, wordLength){
-
     for(let i=0;i<=wordLength;i++){
       if(isNaN(board[posY + i][posX + i].props.id) === true){
         return false;
       } 
     }
-
     return true;
   }*/
 
@@ -88,72 +84,27 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
     return newString;
   }
   
-  export default function selectDirection(DIRECTION,randomPosition,board,selectWord,tam,wordNumber){
-
+  export default function selectDirection(randomPosition,board,selectWord,tam,wordNumber){
     let inverseWord = []
+    let randomDirection;
+    let wordSize = selectWord[wordNumber].length
 
-    if(selectWord.length === 4){
-      if(wordNumber === 0){
-        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
-      }else if(wordNumber === 1){
-        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
-      }else if(wordNumber === 2){
-        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
-      }else if(wordNumber === 3){
-        if(selectWord[wordNumber].length > 5){
-          horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
-        }else{
-          diagonal(board,randomPosition,randomPosition,selectWord,3,tam);
-        }
-      }
-    }else if(selectWord.length === 5){
-      if(wordNumber === 0){
-        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
-      }else if(wordNumber === 1){
-        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
-      }else if(wordNumber === 2){
-        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
-      }else if(wordNumber === 3){
-        horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
-      }else if(wordNumber === 4){
-        vertical(board,randomPosition,randomPosition,selectWord,4,tam);
-      }
-    }else if(selectWord.length === 6){
-      if(wordNumber === 0){
-        horizontal(board,randomPosition,randomPosition,selectWord,0,tam);
-      }else if(wordNumber === 1){
-        vertical(board,randomPosition,randomPosition,selectWord,1,tam);
-      }else if(wordNumber === 2){
-        horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
-      }else if(wordNumber === 3){
-        horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
-      }else if(wordNumber === 4){
-        vertical(board,randomPosition,randomPosition,selectWord,4,tam);
-      }else if(wordNumber === 5){
-        vertical(board,randomPosition,randomPosition,selectWord,5,tam);
-      }
+
+    randomDirection = randomNumber(4);
+
+    if(wordNumber === 2){
+      
+      if(wordSize > 5){
+            horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam);
+      }else{diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam);}
+
+    }else{
+
+      if(randomNumber === 0){ horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam); }
+      else if(randomNumber === 1){  vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam); }
+      else if(randomNumber === 2){  inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam); }
+      else { inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam); }
+
     }
-    
-    /*
-    if(direction === "horizontal"){
-      horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
-    }else if(direction === "horizontalBack"){
-      inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
-      horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
-    }else if(direction === "vertical"){
-      vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
-    }else if(direction === "verticalUp"){
-      inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
-      vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
-    }else if(direction === "diagonal"){
-      diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
-    }else if(direction === "inverseDiagonal"){
-      inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
-      diagonal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
-    }
-    */
 
-
-    //diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
-    //vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
   }
