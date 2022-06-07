@@ -20,8 +20,8 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam){
     board[posY][posX + i] = <button className="boardButton" id={selectWord[wordNumber][i]}>{selectWord[wordNumber][i]}</button>
   }
   
-  console.log(board[3][3].props.id);
 }
+
 function vertical(board, posY, posX, selectWord, wordNumber,tam){
   let wordLength = selectWord[wordNumber].length;
   let extraRand ;
@@ -39,26 +39,44 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
     }
   
   }
-  
+
+  /*function runDiagonal(board, posY, posX, wordLength){
+
+    for(let i=0;i<=wordLength;i++){
+      if(isNaN(board[posY + i][posX + i].props.id) === true){
+        return false;
+      } 
+    }
+
+    return true;
+  }*/
+
   function diagonal(board, posY, posX, selectWord, wordNumber,tam){
+
+
     let wordLength = selectWord[wordNumber].length;
     let extraRand ;
     let randStandX,randStandY;
 
+    
+      do{
+         
+            extraRand = randomNumber(tam);
+            randStandX = randomNumber(5);
+            randStandY = randomNumber(5);
+    
+            posX = extraRand+randStandX;
+            posY = extraRand+randStandY;
 
-        do{
-          extraRand = randomNumber(tam);
-          randStandX = randomNumber(5);
-          randStandY = randomNumber(5);
+      }while(posX+wordLength>tam || posY+wordLength>tam || 
+        (isNaN(board[posY][posX].props.id) === true || isNaN(board[posY+(wordLength-1)][posX+(wordLength-1)].props.id) === true) ||
+        (isNaN(board[posY+(wordLength-2)][posX+(wordLength-2)].props.id) === true || isNaN(board[posY+(wordLength-3)][posX+(wordLength-3)].props.id) === true) ||
+        (isNaN(board[posY+(wordLength-4)][posX+(wordLength-4)].props.id) === true))
 
-          posX = extraRand+randStandX;
-          posY = extraRand+randStandY;
-          
-        }while(posX+wordLength>tam || posY+wordLength>tam || isNaN(board[posY][posX].props.id) === true)
-      
-    for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX + i] = <button className="boardButton" id={selectWord[wordNumber][i]}>{selectWord[wordNumber][i]}</button>
-    }
+
+      for(let i=0; i<selectWord[wordNumber].length; i++){
+        board[posY + i][posX + i] = <button className="boardButton" id={selectWord[wordNumber][i]}>{selectWord[wordNumber][i]}</button>
+      }
   }
   
   function reverseString(str) {
@@ -70,7 +88,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
     return newString;
   }
   
-  export default function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
+  export default function selectDirection(DIRECTION,randomPosition,board,selectWord,tam,wordNumber){
 
     let inverseWord = []
 
@@ -82,7 +100,11 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
       }else if(wordNumber === 2){
         horizontal(board,randomPosition,randomPosition,selectWord,2,tam);
       }else if(wordNumber === 3){
-        diagonal(board,randomPosition,randomPosition,selectWord,3,tam);
+        if(selectWord[wordNumber].length > 5){
+          horizontal(board,randomPosition,randomPosition,selectWord,3,tam);
+        }else{
+          diagonal(board,randomPosition,randomPosition,selectWord,3,tam);
+        }
       }
     }else if(selectWord.length === 5){
       if(wordNumber === 0){

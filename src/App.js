@@ -40,9 +40,8 @@ function gameSetup(tam,board,selectWord,wordSize){
     if(tam > 0){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
-        randomDirection = DIRECTION[randomNumber(6)];
   
-       selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+       selectDirection(DIRECTION,randomPosition,board,selectWord,tam,i);
       }
     }
 
