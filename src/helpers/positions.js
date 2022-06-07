@@ -96,7 +96,9 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
       
       if(wordSize > 5){
             horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam);
-      }else{diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam);}
+      }else{
+        diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam);
+      }
 
     }else{
 
