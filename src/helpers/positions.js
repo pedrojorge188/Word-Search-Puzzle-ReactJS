@@ -12,8 +12,6 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam){
       posX = extraRand;
       posY = extraRand;
       
-
-
     }while(posX+wordLength>tam || isNaN(board[posY][posX].props.id) === true);
     
 
@@ -73,8 +71,24 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   
   export default function selectDirection(direction,randomPosition,board,selectWord,tam,wordNumber){
     let inverseWord = []
+    
+    if(direction === "horizontal"){
+      horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+    }else if(direction === "horizontalBack"){
+      inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
+      horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
+    }else if(direction === "vertical"){
+      vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+    }else if(direction === "verticalUp"){
+      vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
+    }else if(direction === "diagonal"){
+      diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
+    }else if(direction === "inverseDiagonal"){
+      inverseWord[wordNumber] = reverseString(selectWord[wordNumber])
+      diagonal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam)
+    }
+  }
 
-  
     /*
     if(direction === "horizontal"){
       horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
@@ -97,4 +111,3 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
 
     //diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
     //vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam)
-  }

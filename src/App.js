@@ -37,14 +37,29 @@ function randomWords(selectWords,wordSize){
 function gameSetup(tam,board,selectWord,wordSize){
     let  randomPosition , randomDirection
     randomPosition = randomNumber(tam)
+    let TotalSize = 0, LSize = 0;
+    for(let i=0;i<wordSize;i++){
+      TotalSize += selectWord[i].length
+    }
+    console.log(TotalSize)
+
     
+
+    //do{
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
         randomDirection = DIRECTION[randomNumber(6)]
-  
-       selectDirection(randomDirection,randomPosition,board,selectWord,tam,i);
+        selectDirection(randomDirection,randomPosition,board,selectWord,tam,i); 
       }
-}
+      for(let i=0;i<tam;i++){
+        for(let j=0;j<tam;j++){
+          if(isNaN(board[i][j].props.id) === true){
+            LSize++;
+          }
+        }
+      }
+    //}while(TotalSize !== LSize);
+  }
 
 
 function App() {
@@ -74,13 +89,13 @@ function App() {
 
   // Tamanho do tabuleiro e do numero de palavras
   if(selectedLevel === "1"){
-    tam = 11;
+    tam = 13;
     wordSize = 4;
   }else if(selectedLevel === "2"){
-    tam = 12;
+    tam = 14;
     wordSize = 5;
   }else if(selectedLevel === "3"){
-    tam = 13;
+    tam = 15;
     wordSize = 6;
   }
 
