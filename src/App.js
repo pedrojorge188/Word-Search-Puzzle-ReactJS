@@ -11,7 +11,7 @@ import {
 
 import {
         LETTER,
-        WORDS,
+        WORDS
         
 } from "./constants/index"
 
@@ -22,7 +22,6 @@ import{
     StartBoard,
 
 }from "./helpers/index.router"
-
 
 function randomWords(selectWords,wordSize){
   let random = randomNumber(25-wordSize);
@@ -39,13 +38,11 @@ function gameSetup(tam,board,selectWord,wordSize){
     if(tam > 0){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
-  
        selectDirection(randomPosition,board,selectWord,tam,i);
       }
     }
 
 }
-
 
 function App() {
   /*Variaveis utilizadas no scope*/
@@ -61,6 +58,7 @@ function App() {
 
     if(gameStarted){
       setGameStarted(false);
+      window.location.reload();
     }else{      
       setGameStarted(true);
     }

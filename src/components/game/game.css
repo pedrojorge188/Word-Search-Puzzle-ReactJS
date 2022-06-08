@@ -11,6 +11,17 @@
     text-align: center;
     font-size: small;
 }
+.A, .B, .C, .D, .E, .F{
+    border: none;
+    margin: 1px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: small;
+}
+.A:hover, .B:hover, .C:hover, .D:hover, .E:hover, .F:hover{
+    color: white;
+    background-color: rgb(61, 167, 67);
+}
 .boardButton:hover{
     color: white;
     background-color: rgb(61, 167, 67);

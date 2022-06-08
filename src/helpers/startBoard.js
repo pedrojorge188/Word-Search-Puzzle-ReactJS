@@ -2,6 +2,7 @@ import randomNumber from "./randNum";
 
 
 export default function StartBoard(tam,letter,selectWords){
+
     let board = new Array(tam);
     for(let i=0;i<board.length;i++){
       board[i] = new Array(tam);

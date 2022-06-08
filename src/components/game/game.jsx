@@ -20,6 +20,7 @@ function GameComponents(props){
     if(gameStarted === true){
       className = "MainContent-active"
     }
+    
 
     if(gameStarted === true){
       timer = <Timer/>
@@ -36,13 +37,12 @@ function GameComponents(props){
         <div className="timerDiv">
           {timer}
           <section className="wordSection">
-            <span >{words[0]}</span>
-            <span>{words[1]}</span>
-            <span>{words[2]}</span>
-            <span>{words[3]}</span>
-            <span>{words[4]}</span>
-            <span>{words[5]}</span>
-            <span>{words[6]}</span>
+            <span id="wordA">{words[0]}</span>
+            <span id="wordB">{words[1]}</span>
+            <span id="wordC">{words[2]}</span>
+            <span id="wordD">{words[3]}</span>
+            <span id="wordE">{words[4]}</span>
+            <span id="wordF">{words[5]}</span>
           </section>
         </div>
     </div>
