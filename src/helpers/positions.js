@@ -38,15 +38,6 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam){
   
   }
 
-  /*function runDiagonal(board, posY, posX, wordLength){
-    for(let i=0;i<=wordLength;i++){
-      if(isNaN(board[posY + i][posX + i].props.id) === true){
-        return false;
-      } 
-    }
-    return true;
-  }*/
-
   function diagonal(board, posY, posX, selectWord, wordNumber,tam){
 
 
