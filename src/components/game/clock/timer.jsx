@@ -19,7 +19,6 @@ function Timer(level){
 
         if(points === 6){
             setSeconds(0);
-            points += 4;
         }
 
         if(seconds === 0){
