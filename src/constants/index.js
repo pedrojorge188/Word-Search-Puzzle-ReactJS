@@ -10,3 +10,5 @@ export const LETTER = [
 
 
 export const TIME_OUT_GAME = 60;
+
+export let points = 0;

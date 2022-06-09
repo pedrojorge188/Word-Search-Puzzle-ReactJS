@@ -49,6 +49,7 @@
     font-size: 15px;
 }
 .timerDiv .wordSection span{
+    background-color: white;
     font-size: small;
 }
 .timerDiv span{

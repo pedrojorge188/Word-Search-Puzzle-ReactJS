@@ -17,7 +17,7 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam,id){
     
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY][posX + i] = <button className={id} onClick={()=>checkOut(board,selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</button>
+    board[posY][posX + i] = <button className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</button>
   }
   
 }
@@ -35,7 +35,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
 
 
     for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX] = <button className={id} onClick={()=>checkOut(board,selectWord,wordNumber,id,tam)}  id={id}>{selectWord[wordNumber][i]}</button>
+      board[posY + i][posX] = <button className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)}  id={id}>{selectWord[wordNumber][i]}</button>
     }
   
   }
@@ -64,7 +64,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
 
 
       for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posY + i][posX + i] = <button className={id} onClick={()=>checkOut(board,selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</button>
+        board[posY + i][posX + i] = <button className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</button>
       }
   }
   

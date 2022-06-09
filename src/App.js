@@ -1,6 +1,8 @@
 import "./assets/styles/App.css";
 import React from "react";
 import {useState} from "react";
+import {points} from "./helpers/checker"
+
 
 import {
         Header,   
@@ -22,6 +24,7 @@ import{
     StartBoard,
 
 }from "./helpers/index.router"
+
 
 function randomWords(selectWords,wordSize){
   let random = randomNumber(25-wordSize);
@@ -45,6 +48,7 @@ function gameSetup(tam,board,selectWord,wordSize){
 }
 
 function App() {
+
   /*Variaveis utilizadas no scope*/
   let tam, wordSize;
   let board = [];
@@ -90,6 +94,11 @@ function App() {
   /*Game Setup -> Regras de posicionamento das palavras na função*/
   gameSetup(tam,board,selectWords,wordSize);
   
+  /*Checked Words verification*/
+  if(points === wordSize){
+    alert("O seu tempo terminou !\n Obteve"+(points*10)+"pontos!\nBoa Tentativa");
+    setGameStarted(false);
+  }
 
   return (
     <div id="container">

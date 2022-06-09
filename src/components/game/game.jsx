@@ -9,6 +9,7 @@ function GameComponents(props){
     let className = "MainContent-inactive"
     let timer;
 
+
     if(selectedLevel === "1"){
       document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(11,25px)';
     }else if(selectedLevel === "2"){
@@ -17,17 +18,18 @@ function GameComponents(props){
       document.getElementById('boardContent').style.gridTemplateColumns = 'repeat(13,25px)';
     }
 
+
     if(gameStarted === true){
       className = "MainContent-active"
     }
     
-
     if(gameStarted === true){
-      timer = <Timer/>
+      timer = <Timer 
+      />
     }else{
       timer = "Ocorreu um erro com o relogio!"
     }
-    
+
     return(
         
     <div className={className}>
