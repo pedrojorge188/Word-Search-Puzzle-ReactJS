@@ -19,7 +19,6 @@ function Timer(){
             setSeconds(0);
         }
         if(seconds === 0){
-            setSeconds(0);
             alert("O jogo terminou !\n Obteve : "+points*10+"->pontos!\n");
             window.location.reload('../../app.js');
         }
