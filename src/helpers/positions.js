@@ -1,7 +1,7 @@
 import randomNumber from "./randNum";
 import checkOut from "./checker";
 
-function horizontal(board, posY, posX, selectWord, wordNumber,tam,id){
+function horizontal(board, posY, posX, selectWord, wordNumber,tam,id,level){
   let wordLength = selectWord[wordNumber].length;
   let extraRand;
 
@@ -17,12 +17,12 @@ function horizontal(board, posY, posX, selectWord, wordNumber,tam,id){
     
 
   for(let i=0; i<selectWord[wordNumber].length; i++){
-    board[posY][posX + i] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</p>
+    board[posY][posX + i] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,level)} id={id}>{selectWord[wordNumber][i]}</p>
   }
   
 }
 
-function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
+function vertical(board, posY, posX, selectWord, wordNumber,tam,id,level){
   let wordLength = selectWord[wordNumber].length;
   let extraRand ;
 
@@ -35,12 +35,12 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
 
 
     for(let i=0; i<selectWord[wordNumber].length; i++){
-      board[posY + i][posX] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)}  id={id}>{selectWord[wordNumber][i]}</p>
+      board[posY + i][posX] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,level)}  id={id}>{selectWord[wordNumber][i]}</p>
     }
   
   }
 
-  function diagonal(board, posY, posX, selectWord, wordNumber,tam,id){
+  function diagonal(board, posY, posX, selectWord, wordNumber,tam,id,level){
 
 
     let wordLength = selectWord[wordNumber].length;
@@ -64,7 +64,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
 
 
       for(let i=0; i<selectWord[wordNumber].length; i++){
-        board[posY + i][posX + i] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,tam)} id={id}>{selectWord[wordNumber][i]}</p>
+        board[posY + i][posX + i] = <p className={id} onClick={()=>checkOut(selectWord,wordNumber,id,level)} id={id}>{selectWord[wordNumber][i]}</p>
       }
   }
   
@@ -98,7 +98,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
     return id;
   }
 
-  export default function selectDirection(randomPosition,board,selectWord,tam,wordNumber){
+  export default function selectDirection(randomPosition,board,selectWord,tam,wordNumber,level){
     let inverseWord = []
     let randomDirection;
     let wordSize = selectWord[wordNumber].length
@@ -110,17 +110,17 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id){
     if(wordNumber === 2){
       
       if(wordSize > 5){
-        horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id);
+        horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level);
       }else{
-        diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id);
+        diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level);
       }
 
     }else{
 
-      if(randomNumber === 0){ horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id); }
-      else if(randomNumber === 1){  vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id); }
-      else if(randomNumber === 2){  inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam,id); }
-      else { inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam,id); }
+      if(randomNumber === 0){ horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level); }
+      else if(randomNumber === 1){  vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level); }
+      else if(randomNumber === 2){  inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); vertical(board,randomPosition,randomPosition,inverseWord,wordNumber,tam,id,level); }
+      else { inverseWord[wordNumber] = reverseString(selectWord[wordNumber]); horizontal(board,randomPosition,randomPosition,inverseWord,wordNumber,tam,id,level); }
 
     }
 

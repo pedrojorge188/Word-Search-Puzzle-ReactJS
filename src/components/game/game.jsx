@@ -24,7 +24,7 @@ function GameComponents(props){
     }
     
     if(gameStarted === true){
-      timer = <Timer 
+      timer = <Timer level={selectedLevel}
       />
     }else{
       timer = "Ocorreu um erro com o relogio!"
@@ -54,4 +54,3 @@ function GameComponents(props){
 }
 
 export default GameComponents;
-

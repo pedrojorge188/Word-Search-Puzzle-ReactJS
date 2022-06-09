@@ -41,7 +41,7 @@ function gameSetup(tam,board,selectWord,wordSize){
     if(tam > 0){
       for(let i=0;i<wordSize;i++){
         randomPosition = randomNumber(tam);
-       selectDirection(randomPosition,board,selectWord,tam,i);
+       selectDirection(randomPosition,board,selectWord,tam,i,wordSize);
       }
     }
 

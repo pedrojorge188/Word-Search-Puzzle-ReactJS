@@ -3,10 +3,10 @@ export let points = 0;
 let idA = 0, idB = 0, idC = 0, idD = 0, idE = 0;
 let idF = 0;
 
-export default function checkOut(selectWord,wordNumber,id){
+export default function checkOut(selectWord,wordNumber,id,level){
 
   let wordSize = selectWord[wordNumber].length
-  let strSize = selectWord.length;
+
   if(isNaN(id) === true){
 
       if(id === 'A'){
@@ -86,6 +86,15 @@ export default function checkOut(selectWord,wordNumber,id){
               document.getElementById("wordF").style.color = 'black';
               points++;
           } 
+      }
+
+      console.log(level);
+      if(points === 4 && level === 4){
+        points = points+2;
+      }else if(points === 5 && level === 5){
+        points = points+1;
+      }else if(points === 6 && level ===6){
+        points = points+0;
       }
     }
     
