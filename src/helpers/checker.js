@@ -87,8 +87,6 @@ export default function checkOut(selectWord,wordNumber,id,level){
               points++;
           } 
       }
-
-      console.log(level);
       if(points === 4 && level === 4){
         points = points+2;
       }else if(points === 5 && level === 5){
