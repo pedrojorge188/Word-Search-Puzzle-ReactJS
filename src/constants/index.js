@@ -1,3 +1,4 @@
+export const STATE = ['']
 
 export const WORDS = [
      'HTML','CSS','VUEJS','REACT','ANGULAR','NUMERO', 'WEB', 'MOBILE',"PHP", "JAVA","SWIFT", "KOTLIN","PYTHON", 

@@ -4,3 +4,9 @@
     height: 40px;
     gap: 5px;
 }
+.btn-add-more{
+    color: gray;
+}
+.btn-add-more:hover{
+    color:red;
+}

@@ -110,7 +110,7 @@ function vertical(board, posY, posX, selectWord, wordNumber,tam,id,level){
     if(wordNumber === 2){
       
       if(wordSize > 5){
-        horizontal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level);
+        vertical(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level);
       }else{
         diagonal(board,randomPosition,randomPosition,selectWord,wordNumber,tam,id,level);
       }

@@ -13,7 +13,8 @@ import {
 
 import {
         LETTER,
-        WORDS
+        WORDS,
+        STATE
         
 } from "./constants/index"
 
@@ -27,8 +28,8 @@ import{
 
 
 function randomWords(selectWords,wordSize){
-  let random = randomNumber(25-wordSize);
 
+  let random = randomNumber(WORDS.length-wordSize);
   selectWords = WORDS.slice(random,random+wordSize); //Para Alterar
 
   return selectWords
@@ -87,7 +88,12 @@ function App() {
 
   /*Palavras random*/
   selectWords = randomWords(selectWords,wordSize);
-  
+
+  if(STATE.length > 1){
+    selectWords[0] = STATE[1];
+    console.log(STATE)
+  }
+
   //Inicialização do Board
   board = StartBoard(tam,LETTER,selectWords);
 
