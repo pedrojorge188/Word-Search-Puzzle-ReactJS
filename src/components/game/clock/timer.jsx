@@ -9,7 +9,7 @@ function Timer(level){
 
     const [seconds,setSeconds] = useState(TIME_OUT_GAME);
     let timer;
-    
+    let win = 0;
    
     useEffect(()=>{
 
@@ -18,11 +18,17 @@ function Timer(level){
         },1000)
 
         if(points === 6){
+            win = 1;
             setSeconds(0);
         }
 
         if(seconds === 0){
-            alert("O jogo terminou !\n Obteve : "+points*10+"->pontos!\n");
+
+            if(win === 1){
+                alert("Voçê Ganhou o jogo !\n Obteve : "+10*10+"->pontos!\n");
+            }else{
+                alert("O jogo terminou !\n Obteve : "+points*10+"->pontos!\n");
+            }
             window.location.reload('../../app.js');
             points = 0;
         }
