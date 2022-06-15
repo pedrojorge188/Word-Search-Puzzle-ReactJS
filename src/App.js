@@ -45,7 +45,7 @@ function gameSetup(tam,board,selectWord,wordSize){
        selectDirection(randomPosition,board,selectWord,tam,i,wordSize);
       }
     }
-
+  
 }
 
 function App() {
